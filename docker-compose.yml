@@ -1,0 +1,32 @@
+version: '3.2'
+
+services:
+
+    postgres:
+        image: postgres:15-alpine
+        environment:
+            POSTGRES_USER: tron_user
+            POSTGRES_PASSWORD: tron_pass
+            POSTGRES_DB: tron_db
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
+
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        env_file:
+            - .env
+        volumes:
+            - ./src:/app
+            - ./mnt:/mnt
+        ports:
+            - "8989:80"
+        command: uvicorn --port 80 --host 0.0.0.0 --loop uvloop --lifespan on --reload main:app
+        depends_on:
+            - postgres
+
+volumes:
+    postgres_data:

@@ -1,0 +1,21 @@
+.idea
+.venv
+venv
+.env*
+.coverage
+.ropeproject
+.DS_Store
+.vscode
+.devcontainer
+debug
+
+# byte-compiled
+__pycache__/
+*.py[cod]
+*$py.class
+*.patch
+
+*.sublime-project
+*.sublime-workspace
+
+src/.mypy_cache/

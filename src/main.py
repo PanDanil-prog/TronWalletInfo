@@ -44,7 +44,3 @@ app.include_router(
 )
 
 setup_middlewares(app)
-
-import uvicorn
-
-uvicorn.run(app)

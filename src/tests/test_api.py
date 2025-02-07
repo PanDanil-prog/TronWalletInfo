@@ -2,7 +2,7 @@ import pytest
 
 def test_get_wallet(client):
 
-    response = client.post("/", json={"address": "TCQPAt3swdNMadK4DcbzGNnA146D5uQteZ"})
+    response = client.post("api/wallet", json={"address": "TCQPAt3swdNMadK4DcbzGNnA146D5uQteZ"})
     assert response.status_code == 200
     data = response.json()
     assert data["address"] == "TCQPAt3swdNMadK4DcbzGNnA146D5uQteZ"
@@ -12,7 +12,7 @@ def test_get_wallet(client):
 
 def test_get_wallet_requests(client):
 
-    response = client.get("/")
+    response = client.get("api/wallet-requests")
     assert response.status_code == 200
     data = response.json()
     assert isinstance(data["items"], list)

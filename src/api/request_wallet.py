@@ -27,7 +27,6 @@ router = APIRouter()
 async def handler(
     req: WalletGet = Body(...)
 ) -> WalletSchema:
-    # TODO: Insert request into db
 
     wallet_data = await tron.get_account_info(wallet_address=req.address)
     wallet_info = wallet_data['data'][0]
